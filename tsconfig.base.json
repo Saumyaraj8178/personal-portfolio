@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@portfolio/portfolio-state": ["lib/state/src/index.ts"]
+      "@portfolio/portfolio-state": ["lib/state/src/index.ts"],
+      "@portfolio/portfolio-ui": ["lib/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
