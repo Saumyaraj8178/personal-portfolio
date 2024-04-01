@@ -1,7 +1,6 @@
-export * from './lib/+state/portfolio/portfolio.models';
-export * from './lib/+state/portfolio/portfolio.selectors';
-export * from './lib/+state/portfolio/portfolio.reducer';
-export * from './lib/+state/portfolio/portfolio.actions';
+export * as PortfolioSelector from './lib/+state/portfolio/portfolio.selectors';
+export * as PortfolioFeature from './lib/+state/portfolio/portfolio.reducer';
+export * as PortfolioAction from './lib/+state/portfolio/portfolio.actions';
 export * from './lib/portfolio-state.module';
 
-export type { Portfolio } from './lib/models/portfolio';
+export type { Portfolio } from './lib/model/portfolio';
