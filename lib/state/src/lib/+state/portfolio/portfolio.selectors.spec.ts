@@ -1,4 +1,4 @@
-import { PortfolioEntity } from './portfolio.models';
+import { Portfolio } from '../../model/portfolio';
 import {
   portfolioAdapter,
   PortfolioPartialState,
@@ -8,12 +8,12 @@ import * as PortfolioSelectors from './portfolio.selectors';
 
 describe('Portfolio Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getPortfolioId = (it: PortfolioEntity) => it.id;
-  const createPortfolioEntity = (id: string, name = '') =>
+  const getPortfolioId = (it: Portfolio) => it.id;
+  const createPortfolio = (id: string, name = '') =>
     ({
       id,
       name: name || `name-${id}`,
-    } as PortfolioEntity);
+    } as Portfolio);
 
   let state: PortfolioPartialState;
 
@@ -21,9 +21,9 @@ describe('Portfolio Selectors', () => {
     state = {
       portfolio: portfolioAdapter.setAll(
         [
-          createPortfolioEntity('PRODUCT-AAA'),
-          createPortfolioEntity('PRODUCT-BBB'),
-          createPortfolioEntity('PRODUCT-CCC'),
+          createPortfolio('PRODUCT-AAA'),
+          createPortfolio('PRODUCT-BBB'),
+          createPortfolio('PRODUCT-CCC'),
         ],
         {
           ...initialPortfolioState,
@@ -45,7 +45,7 @@ describe('Portfolio Selectors', () => {
     });
 
     it('selectEntity() should return the selected Entity', () => {
-      const result = PortfolioSelectors.selectEntity(state) as PortfolioEntity;
+      const result = PortfolioSelectors.selectEntity(state) as Portfolio;
       const selId = getPortfolioId(result);
 
       expect(selId).toBe('PRODUCT-BBB');

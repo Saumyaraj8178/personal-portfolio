@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { PortfolioEntity } from './portfolio.models';
+import { Portfolio } from '../../model/portfolio';
 
 export const initPortfolio = createAction('[Portfolio Page] Init');
 
 export const loadPortfolioSuccess = createAction(
   '[Portfolio/API] Load Portfolio Success',
-  props<{ portfolio: PortfolioEntity[] }>()
+  props<{ portfolio: Portfolio[] }>()
 );
 
 export const loadPortfolioFailure = createAction(

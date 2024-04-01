@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 import * as PortfolioActions from './portfolio.actions';
-import { PortfolioEntity } from './portfolio.models';
+import { Portfolio } from '../../model/portfolio';
 import {
   PortfolioState,
   initialPortfolioState,
@@ -9,7 +9,7 @@ import {
 } from './portfolio.reducer';
 
 describe('Portfolio Reducer', () => {
-  const createPortfolioEntity = (id: string, name = ''): PortfolioEntity => ({
+  const createPortfolio = (id: string, name = ''): Portfolio => ({
     id,
     name: name || `name-${id}`,
   });
@@ -17,8 +17,8 @@ describe('Portfolio Reducer', () => {
   describe('valid Portfolio actions', () => {
     it('loadPortfolioSuccess should return the list of known Portfolio', () => {
       const portfolio = [
-        createPortfolioEntity('PRODUCT-AAA'),
-        createPortfolioEntity('PRODUCT-zzz'),
+        createPortfolio('PRODUCT-AAA'),
+        createPortfolio('PRODUCT-zzz'),
       ];
       const action = PortfolioActions.loadPortfolioSuccess({ portfolio });
 
