@@ -1,25 +1,75 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
-import { Store } from '@ngrx/store';
-import {
-  Portfolio,
-  PortfolioFeature,
-  PortfolioSelector,
-} from '@portfolio/portfolio-state';
-import { EMPTY, Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { Portfolio } from '@portfolio/portfolio-state';
 
 @Component({
   selector: 'lib-main',
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent implements OnInit {
-  portfolios$: Observable<Portfolio[]> = EMPTY;
-  readonly #store = Inject(Store<PortfolioFeature.PortfolioPartialState>);
+export class MainComponent {
+  portfolios: Portfolio[] = this.#getPortfolios();
 
-  constructor() // private readonly store: Store<PortfolioFeature.PortfolioPartialState>
-  {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.portfolios$ = this.#store.select(PortfolioSelector.selectAllPortfolio);
+  #getPortfolios() {
+    return [
+      {
+        id: 'VikasPortfolio-123',
+        email: 'vikastripathiofficial@gmail.com',
+        phone: '',
+        linkedin: '',
+        github: '',
+        summary: '',
+        fullName: 'Vikas Mani Tripathi',
+        experiences: [
+          {
+            company: '',
+            duration: { start: '', end: '' },
+            location: '',
+            position: '',
+            description: [''],
+          },
+        ],
+        technicalSkills: [
+          {
+            category: '',
+            skills: [],
+          },
+        ],
+        educations: [
+          {
+            university: '',
+            college: '',
+            graduation: '',
+            program: '',
+          },
+        ],
+        projects: [
+          {
+            title: '',
+            duration: { start: '', end: '' },
+            keyHighlight: '',
+            description: [],
+          },
+        ],
+        otherWorkExperiences: [
+          {
+            company: '',
+            duration: { start: '', end: '' },
+            location: '',
+            position: '',
+            description: [],
+          },
+        ],
+        activities: [
+          {
+            title: '',
+            keyHighlight: '',
+            duration: { start: '', end: '' },
+            description: [],
+          },
+        ],
+      },
+    ];
   }
 }
