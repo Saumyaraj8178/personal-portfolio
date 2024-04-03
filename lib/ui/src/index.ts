@@ -1,3 +1,5 @@
-export * from './lib/portfolio-ui.module';
+export { MainComponent } from './lib/main/main.component';
+export { ProjectsComponent } from './lib/projects/projects.component';
+export { AboutUsComponent } from './lib/about-us/about-us.component';
 
-export * from './lib/main/main.component';
+export * from './lib/portfolio-ui.module';

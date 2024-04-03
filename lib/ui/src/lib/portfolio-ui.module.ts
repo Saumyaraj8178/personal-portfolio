@@ -8,11 +8,7 @@ import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   imports: [CommonModule, StoreModule.forRoot(), PortfolioStateModule],
-  declarations: [
-    MainComponent,
-    AboutUsComponent,
-    ProjectsComponent,
-  ],
-  exports: [MainComponent],
+  declarations: [MainComponent, AboutUsComponent, ProjectsComponent],
+  exports: [MainComponent, AboutUsComponent, ProjectsComponent],
 })
 export class PortfolioUiModule {}
