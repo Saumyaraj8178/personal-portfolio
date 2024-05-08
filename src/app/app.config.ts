@@ -1,7 +1,12 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(appRoutes)],
+  providers: [
+    importProvidersFrom(RouterModule.forRoot(appRoutes),StoreModule.forRoot(),EffectsModule.forRoot())
+  ],
 };
+

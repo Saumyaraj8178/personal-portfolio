@@ -1,75 +1,24 @@
-import { Component } from '@angular/core';
-import { Portfolio } from '@portfolio/portfolio-state';
-
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import {
+  Portfolio,
+  PortfolioActions,
+  PortfolioFeature,
+  PortfolioSelectors,
+} from '@portfolio/portfolio-state';
+import { EMPTY, Observable } from 'rxjs';
 @Component({
   selector: 'lib-main',
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent {
-  portfolios: Portfolio[] = this.#getPortfolios();
+export class MainComponent implements OnInit {
+  portfolios$: Observable<Portfolio[]> = EMPTY;
 
-  constructor() {}
+  constructor(private store: Store<PortfolioFeature.PortfolioPartialState>) {}
 
-  #getPortfolios() {
-    return [
-      {
-        id: 'VikasPortfolio-123',
-        email: 'vikastripathiofficial@gmail.com',
-        phone: '',
-        linkedin: '',
-        github: '',
-        summary: '',
-        fullName: 'Vikas Mani Tripathi',
-        experiences: [
-          {
-            company: '',
-            duration: { start: '', end: '' },
-            location: '',
-            position: '',
-            description: [''],
-          },
-        ],
-        technicalSkills: [
-          {
-            category: '',
-            skills: [],
-          },
-        ],
-        educations: [
-          {
-            university: '',
-            college: '',
-            graduation: '',
-            program: '',
-          },
-        ],
-        projects: [
-          {
-            title: '',
-            duration: { start: '', end: '' },
-            keyHighlight: '',
-            description: [],
-          },
-        ],
-        otherWorkExperiences: [
-          {
-            company: '',
-            duration: { start: '', end: '' },
-            location: '',
-            position: '',
-            description: [],
-          },
-        ],
-        activities: [
-          {
-            title: '',
-            keyHighlight: '',
-            duration: { start: '', end: '' },
-            description: [],
-          },
-        ],
-      },
-    ];
+  ngOnInit(): void {
+    this.store.dispatch(PortfolioActions.initPortfolio());
+    this.portfolios$ = this.store.select(PortfolioSelectors.selectAllPortfolio);
   }
 }
